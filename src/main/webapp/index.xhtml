@@ -6,25 +6,49 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <f:view>
-    <h:outputLabel value="Hello, world"/>
+    <h:head>
+        <h:outputScript>
+            function onMessage(message) {
+                console.log("Update page")
+                location.reload();
+            }
+        </h:outputScript>
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <h:outputStylesheet library="css" name="css.css"/>
+    </h:head>
 
-    <h:panelGroup id="restServiceImpl" rendered="true">
-        <h:dataTable value="#{restServiceImpl.events}" var="event" styleClass="table table-sub-heading-color"
-                     id="restService">
+    <h:body id="body">
 
-            <h:column>
-                <f:facet name="header">Time</f:facet>
-                #{event.time}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Second Name</f:facet>
-                #{event.patient.secondName}
-            </h:column>
-            <h:column>
-                <f:facet name="header">First Name</f:facet>
-                #{event.patient.firstName}
-            </h:column>
-        </h:dataTable>
-    </h:panelGroup>
+        <div id="container">
+            <h:panelGroup id="restRec" rendered="true">
+                <h:dataTable value="#{restReceiver.events}" var="event"
+                             styleClass="table table-striped table-bordered table-hover"
+                             id="restReceiver">
+
+                    <h:column>
+                        <f:facet name="header">Time</f:facet>
+                        #{event.time}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Patient</f:facet>
+                        #{event.patient}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Doctor</f:facet>
+                        #{event.doctor}
+                    </h:column>
+                </h:dataTable>
+            </h:panelGroup>
+        </div>
+            <div id="footer" class="footer">
+                    <div class="text-center"><span>CLINIC</span></div>
+                    <div class="text-center"><span>our support team tel:+7812 5555555</span></div>
+            </div>
+        <f:websocket channel="websocket" onmessage="onMessage"/>
+    </h:body>
 </f:view>
+
 </html>
