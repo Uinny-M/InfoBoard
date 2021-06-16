@@ -21,9 +21,13 @@
     </h:head>
 
     <h:body id="body">
+        <div id="header1" class="header1">
+            <div class="text-center"><span>CLINIC</span></div>
+            <div class="text-center"><span>Phone: 8-800-800-80-80</span></div>
+        </div>
 
         <div id="container">
-            <h:panelGroup id="restRec" rendered="true">
+            <h:panelGroup id="restRec" styleClass="restRec" rendered="true">
                 <h:dataTable value="#{restReceiver.events}" var="event"
                              styleClass="table table-striped table-bordered table-hover"
                              id="restReceiver">
@@ -43,7 +47,7 @@
                 </h:dataTable>
             </h:panelGroup>
         </div>
-            <div id="footer" class="footer">
+            <div id="footer1" class="footer1">
                     <div class="text-center"><span>CLINIC</span></div>
                     <div class="text-center"><span>our support team tel:+7812 5555555</span></div>
             </div>
