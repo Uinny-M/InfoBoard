@@ -1,14 +1,11 @@
 package com.example.InfoBoard.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.Getter;
-import lombok.Setter;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
-//@Getter
-//@Setter
+
 public class Connector {
     private Client eventClient;
     private WebTarget eventTarget;
